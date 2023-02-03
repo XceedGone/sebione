@@ -12,6 +12,19 @@
     <link rel="stylesheet" href="{{ asset('css/fontawesome.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        laravel: "#ff7849",
+                    },
+                },
+            },
+        };
+    </script>
+    <script src="//unpkg.com/alpinejs" defer></script>
     @yield('styles')
 </head>
 <body class="hold-transition sidebar-mini">
