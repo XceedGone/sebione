@@ -15,13 +15,13 @@ use App\Http\Controllers\CompanyController;
 */
 
 //When logged in, they cannot access the login form 
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('auth.login');
 })->name('login')->middleware('guest');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/company/{company}', [CompanyController::class, 'show']);
 
