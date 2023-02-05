@@ -17,7 +17,8 @@ class CompanyController extends Controller
 
     public function show(Company $company){    
         return view('show', [
-            'employee' => Company::find($company->id)->emp()->get()
+            'employee' => Company::find($company->id)->emp()->get(),   
+            'company' => $company
         ]);
     }
 }

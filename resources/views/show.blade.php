@@ -1,4 +1,3 @@
-
 @foreach ($employee as $emp)
     <div class="col-12 col-sm-6 col-md-3">
         <!--Information boxex-->
@@ -9,9 +8,16 @@
                 <span class="info-box-number">
                     <small>{{ $emp->phone }}</small>
                 </span>
+                 <!--company name-->
+                <span class="info-box-number">
+                    <small>{{ $company->name }}</small>
+                </span>
+       
+               
             </div>
             <!-- /.info-box-content -->
         </div>
         <!-- /.info-box -->
     </div>
 @endforeach
+  
