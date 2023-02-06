@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">{{ __('Dashboard') }}</h1>
+                    <h1 class="m-0">{{ __('About us') }}</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -16,15 +16,19 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <!--Show card-->
             <div class="row">
-                @unless(count($companies) == 0)
-                    @foreach ($companies as $company)
-                        <x-company-card :company='$company' />
-                    @endforeach
-                @else
-                    <p>No Listing to show</p>
-                @endunless
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ __('About us') }}</h5>
+
+                            <p class="card-text">
+                                {{ __('Sample static text page ') }}
+                                {{ __('Hello world ') }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->

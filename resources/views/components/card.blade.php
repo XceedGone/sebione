@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="col-md-6">
    
    {{$slot}}
  

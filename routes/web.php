@@ -1,7 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,13 +24,28 @@ Route::get('/login', function () {
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [CompanyController::class, 'index'])->name('home');
 
 Route::get('/company/{company}', [CompanyController::class, 'show']);
 
+Route::get('/create', [CompanyController::class, 'create']);
+
+Route::get('/create/id/{company}', [EmployeeController::class, 'create']);
+
+Route::post('/addCompany', [CompanyController::class, 'store']);
+
+Route::post('/addEmployee', [EmployeeController::class, 'store']);
+
+Route::delete('/delete/{company}', [CompanyController::class, 'destroy']);
+
+Route::get('/edit/{company}', [CompanyController::class, 'edit']);
+
+Route::put('/editCompany/{company}' , [CompanyController::class, 'update']);
+
+
 
 Route::middleware('auth')->group(function () {
-    Route::view('about', 'about')->name('about');
+    Route::view('about', 'main-contents.about')->name('about');
 
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
 
