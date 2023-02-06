@@ -1,16 +1,36 @@
 @props(['company'])
 
-<div class="col-12 col-sm-6 col-md-3">
-    <!--Information boxex-->
-    <div class="info-box">
-        <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
-        <div class="info-box-content">
-            <a href="/company/{{ $company->id }}"><span class="info-box-text">{{ $company->name }}</span></a>
-            <span class="info-box-number">
-                <small>{{ $company->email }}</small>
-            </span>
+<div class="col-lg-3 col-6">
+    <!-- small card -->
+
+    <div class="small-box bg-info">
+         
+        <div class="inner">
+            <h3>{{ $company->name }}</h3>
+            <p> {{ $company->email }} </p>
         </div>
-        <!-- /.info-box-content -->
+        <div class="icon">
+            <i class="fas fa-shopping-cart"></i>
+        </div>
+        <a href="/company/{{$company->id}}" class="small-box-footer">
+            Show Empolyee <i class="fas fa-arrow-circle-right"></i>
+        </a>
+
+        <a href="/edit/{{$company->id}}" class="small-box-footer">
+            Edit <i class="fas fa-arrow-circle-right"></i>
+        </a>
+
+        <form method="POST" action="/delete/{{$company->id}}">
+            @csrf
+            @method('DELETE')
+
+            <button class="text-red-500">
+                <i class="fas fa-trash"></i> Delete
+            </button>
+        </form>
+        
+        
+        
+
     </div>
-    <!-- /.info-box -->
 </div>
