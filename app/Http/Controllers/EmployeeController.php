@@ -17,7 +17,7 @@ class EmployeeController extends Controller
     }
 
     //store data to database 
-    public function store(Company $company){
+    public function store(){ 
         $formFields = request()->validate([
             //Unique parameter is: unique('databaseTable' , 'columnName')
             'firstname' => ['required'],
@@ -26,9 +26,8 @@ class EmployeeController extends Controller
             'email' => ['email' , 'required'],
             'phone' => 'required'
         ]);
-
+      
         Employee::create($formFields);
-        $id = $company->id;
 
         return redirect('/home')->with('message','Created Successfully!');
 
