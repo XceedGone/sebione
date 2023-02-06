@@ -34,8 +34,12 @@
                 @endunless
             </div>   
             <!-- /.row -->
+             
+
         </div><!-- /.container-fluid -->
     </div>
+
+
     <!-- /.content -->
     <div class="mt-6 p-4">
         {{$companies->links()}}

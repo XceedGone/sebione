@@ -41,12 +41,11 @@ class CompanyController extends Controller
         // }
 
         $company->delete();
-        return redirect('/')->with('message','Deleted Successfully!');
+        return redirect('/home')->with('message','Deleted Successfully!');
     }
 
     //show data from database 
     public function show(Company $company){    
-       
         return view('main-contents.show', [
             'employee' => Company::find($company->id)->emp()->latest()->Paginate(10),   
             'company' => $company

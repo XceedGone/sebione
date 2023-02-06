@@ -42,8 +42,6 @@ Route::get('/edit/{company}', [CompanyController::class, 'edit']);
 
 Route::put('/editCompany/{company}' , [CompanyController::class, 'update']);
 
-
-
 Route::middleware('auth')->group(function () {
     Route::view('about', 'main-contents.about')->name('about');
 
