@@ -46,11 +46,11 @@ class DatabaseSeeder extends Seeder
             'website' => 'jollibee.com',
         ]);
 
-        Employee::factory(6)->create([
+        Employee::factory(15)->create([
             'company' => $company_1->id
         ]);
 
-        Employee::factory(6)->create([
+        Employee::factory(15)->create([
             'company' => $company_2->id
         ]);
     }

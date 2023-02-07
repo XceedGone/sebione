@@ -2,7 +2,7 @@
 
 <div class="col-md-4">
     <!-- Widget: user widget style 1 -->
-    <div class="card card-widget widget-user" style="width:290px; height:400px">
+    <div class="card card-widget widget-user">
         <!-- Add the bg color to the header using any of the bg-* classes -->
         <div class="widget-user-header bg-secondary">
             <h3 class="widget-user-username">{{ $employee->firstname }} {{ $employee->lastname }}</h3>

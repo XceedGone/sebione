@@ -16,13 +16,22 @@ class CompanyController extends Controller
     //     ]);
     // }
 
-    public function index()
-    {
-        return view('main-contents.index',[
-            'companies' => Company::latest()->Paginate(10),
+    // public function index()
+    // {
+    //     return view('main-contents.index',[
+    //         'companies' => Company::latest()->Paginate(10),
+    //         'company' => Company::latest()->Paginate(5),
+    //         'employee' => Employee::latest()->Paginate(5),
+
     
-        ]);
-    }
+    //     ]);
+    // }
+
+    // public function showAll(){
+    //     return view('company.showAll',[
+    //         'companies' => Company::latest()->Paginate(10),
+    //     ]);
+    // }
 
     public function edit(Company $company)
     {

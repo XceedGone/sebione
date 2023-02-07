@@ -18,13 +18,23 @@ use App\Http\Controllers\EmployeeController;
 */
 
 //When logged in, they cannot access the login form 
-Route::get('/login', function () {
+Route::get('/', function () {
     return view('auth.login');
 })->name('login')->middleware('guest');
 
 Auth::routes();
 
-Route::get('/home', [CompanyController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('/show-companies', [HomeController::class, 'showCompany']);
+
+Route::get('/show-employees', [HomeController::class, 'showEmployee']);
+
+// Route::get('/home', [EmployeeController::class, 'index'])->name('home');
+
+
+// Route::get('/show', [EmployeeController::class, 'showAll']);
+
 
 Route::get('/company/{company}', [CompanyController::class, 'show']);
 
