@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/company/{{$company->id}}">Back</a></li>
+                        <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
                         <li class="breadcrumb-item active">Employee Add Form</li>
                     </ol>
                 </div>
@@ -29,13 +29,14 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form method="POST" action="/addEmployee" enctype="multipart/form-data">
+                    <form method="POST" action="/editEmployee/{{$employee->id}}">
                         @csrf
+                        @method('PUT')
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="firstname">First name</label>
                                 <input type="text" class="form-control" id="firstname" placeholder="Enter First Name"
-                                    name="firstname" value="{{ old('firstname') }}">
+                                    name="firstname" value="{{ $employee->firstname }}">
 
                                 @error('name')
                                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -45,7 +46,7 @@
                             <div class="form-group">
                                 <label for="lastname">Last name</label>
                                 <input type="text" class="form-control" id="lastname" placeholder="Enter Last name"
-                                    name="lastname" value="{{ old('lastname') }}">
+                                    name="lastname" value="{{ $employee->lastname }}">
 
                                 @error('name')
                                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -54,19 +55,19 @@
 
                             <div class="form-group">
                                 <input type="hidden" class="form-control" id="company" placeholder="Enter Company"
-                                    name="company" value="{{ $company->id }}">
+                                    name="company" value="{{ $employee->company }}">
                             </div>
 
                             <div class="form-group">
                                 <label for="email">Email address</label>
                                 <input type="email" class="form-control" id="email" placeholder="Enter Email"
-                                    name="email" value="{{ old('email') }}">
+                                    name="email" value="{{ $employee->email }}">
                             </div>
 
                             <div class="form-group">
                                 <label for="phone">Phone number</label>
                                 <input type="number" class="form-control" id="phone" placeholder="Enter Phone Number"
-                                    name="phone" value="{{ old('phone') }}">
+                                    name="phone" value="{{ $employee->phone }}">
                             </div>
                            
                         </div>

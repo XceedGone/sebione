@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="/show-companies">Companies</a></li>
                         <li class="breadcrumb-item active">Employees</li>
                     </ol>
                 </div>

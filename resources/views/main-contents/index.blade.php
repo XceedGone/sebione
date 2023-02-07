@@ -24,7 +24,7 @@
                 </div>
             </div> --}}
 
-            <div class="row mb-2">
+            {{-- <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0">{{ __('Companies') }}</h1>
 
@@ -39,20 +39,24 @@
                     @foreach ($company as $company)
                         <x-company-card :company='$company' />
                     @endforeach
-            </div>
+            </div> --}}
 
       
 
             <div class="row">
-                <div class="col-sm-6">
-                    <a href="/show-companies" class="btn btn-primary">Show more</a>
+                <div class="col-sm-2">
+                    <a href="/show-companies" class="btn btn-primary">Show companies</a>
                 </div>
-                @else
+
+                <div class="col-sm-2">
+                    <a href="/show-employees" class="btn btn-primary">Show employees</a>
+                </div>
+                {{-- @else
                     <p>No Listing to show</p>
-                @endunless
+                @endunless --}}
             </div>
             <!-- /.row -->
-
+            
              
         </div><!-- /.container-fluid -->
     </div>

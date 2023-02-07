@@ -50,7 +50,7 @@ class CompanyController extends Controller
         // }
 
         $company->delete();
-        return redirect('/home')->with('message','Deleted Successfully!');
+        return redirect('/show-companies')->with('message','Deleted Successfully!');
     }
 
     //show data from database 
@@ -67,8 +67,7 @@ class CompanyController extends Controller
     }
 
     //store data to database 
-    public function store(){
-
+    public function store(Company $company){
         $formFields = request()->validate([
             //Unique parameter is: unique('databaseTable' , 'columnName')
             'name' => ['required' , Rule::unique('companies' , 'name')],
@@ -81,9 +80,9 @@ class CompanyController extends Controller
             $formFields['logo'] = request()->file('logo')->store('logos','public');
         }
 
-        Company::create($formFields);
+        $company -> create($formFields);
 
-        return redirect('/home')->with('message','Created Successfully!');
+        return redirect('/show-companies')->with('message','Created Successfully!');
 
     }
 
@@ -110,7 +109,7 @@ class CompanyController extends Controller
 
         $company->update($formFields);
 
-        return back()->with('message', 'Update Successfully!');
+        return redirect('/show-companies')->with('message', 'Update Successfully!');
     }
 
 
