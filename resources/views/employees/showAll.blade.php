@@ -31,9 +31,7 @@
             @unless(count($employee) == 0)
                 @foreach ($employee as $emp)
                     @foreach ($company as $comp)
-                   
-                        <x-card-employee :company='$comp' :employee='$emp' />
-                       
+                        <x-employee-card :company='$comp' :employee='$emp' />
                     @endforeach
                 @endforeach
             @else
@@ -54,11 +52,9 @@
                 <!-- /.error-page -->
             @endunless
         </div>
+
     </div>
     <div class="mt-6 p-4">
         {{ $employee->links() }}
     </div>
-
-
-   
 @endsection

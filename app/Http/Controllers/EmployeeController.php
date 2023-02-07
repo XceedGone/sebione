@@ -40,6 +40,7 @@ class EmployeeController extends Controller
 
     //store data to database 
     public function store(){ 
+        
         $formFields = request()->validate([
             //Unique parameter is: unique('databaseTable' , 'columnName')
             'firstname' => ['required'],
@@ -48,10 +49,44 @@ class EmployeeController extends Controller
             'email' => ['email' , 'required'],
             'phone' => 'required'
         ]);
-      
+
+        $id = $formFields['company'];
+   
         Employee::create($formFields);
-
-        return redirect('/home')->with('message','Created Successfully!');
-
+        return redirect('/company/'.$id)->with('message','Created Successfully!');
     }
+
+    //Delete Company 
+    public function destroy(Employee $employee)
+    {
+        $employee->delete();
+        return back()->with('message','Deleted Successfully!');
+    }
+
+    //show edit view
+    public function edit(Employee $employee)
+    {
+        return view('employees.edit', [
+            'employee' => $employee,
+        ]);
+    }
+
+    public function update(Employee $employee){
+        $formFields = request()->validate([
+            //Unique parameter is: unique('databaseTable' , 'columnName')
+            'firstname' => ['required'],
+            'lastname' => ['required'],
+            'company' => ['required'],
+            'email' => ['email' , 'required'],
+            'phone' => 'required'
+        ]);
+ 
+        $employee->update($formFields);
+
+        return redirect('/home')->with('message','Update Successfully!');
+    }
+
+
+
+
 }

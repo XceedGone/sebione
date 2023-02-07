@@ -44,7 +44,6 @@ class HomeController extends Controller
             // 'employee' => Company::find($company->id)->emp()->latest()->Paginate(10),   
             'employee' => Employee::latest()->Paginate(10),
             'company' => Company::latest()->Paginate(10),
-
         ]);
     }
 

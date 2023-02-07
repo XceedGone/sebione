@@ -28,10 +28,10 @@
             <!-- /.row -->
         </div>
         <div class="card-body mx-auto">
-            <form method="POST" action="/delete/{{ $company->id }}">
+            <form method="POST" action="/deleteEmp/{{ $employee->id }}">
                 @csrf
                 @method('DELETE')
-                <a href="/edit/{{ $company->id }}" class="btn btn-secondary btn-sm">
+                <a href="/editEmp/{{ $employee->id }}" class="btn btn-secondary btn-sm">
                     Edit <i class="fas fa-edit"></i>
                 </a>
                 <button class="btn-danger btn-sm">

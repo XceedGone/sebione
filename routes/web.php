@@ -20,7 +20,7 @@ use App\Http\Controllers\EmployeeController;
 //When logged in, they cannot access the login form 
 Route::get('/', function () {
     return view('auth.login');
-})->name('login')->middleware('guest');
+})->name('loginn')->middleware('guest');
 
 Auth::routes();
 
@@ -35,12 +35,12 @@ Route::get('/show-employees', [HomeController::class, 'showEmployee']);
 
 // Route::get('/show', [EmployeeController::class, 'showAll']);
 
-
-Route::get('/company/{company}', [CompanyController::class, 'show']);
+Route::get('/company/{company}', [CompanyController::class, 'show'])->name('company');
 
 Route::get('/create', [CompanyController::class, 'create']);
 
 Route::get('/create/id/{company}', [EmployeeController::class, 'create']);
+
 
 Route::post('/addCompany', [CompanyController::class, 'store']);
 
@@ -50,7 +50,14 @@ Route::delete('/delete/{company}', [CompanyController::class, 'destroy']);
 
 Route::get('/edit/{company}', [CompanyController::class, 'edit']);
 
+Route::get('/editEmp/{employee}', [EmployeeController::class, 'edit']);
+
 Route::put('/editCompany/{company}' , [CompanyController::class, 'update']);
+
+Route::put('/editEmployee/{employee}' , [EmployeeController::class, 'update']);
+
+
+Route::delete('/deleteEmp/{employee}', [EmployeeController::class, 'destroy']);
 
 Route::middleware('auth')->group(function () {
     Route::view('about', 'main-contents.about')->name('about');
