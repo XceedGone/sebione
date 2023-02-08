@@ -10,6 +10,13 @@ class Employee extends Model
 {
     use HasFactory;
 
+    public function scopeFilter($query, array $filters){
+        if($filters['search'] ?? false){
+            $query->where('firstname', 'like', '%' . request('search') .'%')
+            ->orWhere('lastname', 'like', '%' . request('search') .'%');
+        }
+    }
+
     //Relationship to company
     public function comp(){
         return $this->belongsTo(Company::class, 'company');

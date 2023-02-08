@@ -27,23 +27,26 @@ class HomeController extends Controller
      public function index()
     {
         return view('main-contents.index',[
-            'companies' => Company::latest()->Paginate(10),
-            'company' => Company::latest()->Paginate(5),
-            'employee' => Employee::latest()->Paginate(5),
+            'companies' => Company::get(),
+            'employees' => Employee::get(),
         ]);
     }
 
     public function showCompany(){
         return view('company.showAll',[
-            'companies' => Company::latest()->Paginate(10),
+            'companies' => Company::latest()->filter(request(['search']))->Paginate(10),
         ]);
     }
 
     public function showEmployee(){
+        $data = Employee::with('comp')->filter(request(['search']))->Paginate(10);
+
         return view('employees.showAll',[
             // 'employee' => Company::find($company->id)->emp()->latest()->Paginate(10),   
-            'employee' => Employee::latest()->Paginate(10),
-            'company' => Company::latest()->Paginate(10),
+            // 'employee' => Employee::latest()->Paginate(10),
+            // 'company' => Company::get(),
+            'employee' => $data
+
         ]);
     }
 

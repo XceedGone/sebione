@@ -18,38 +18,19 @@
             </div>
         </div><!-- /.container-fluid -->
     </section>
+      <!-- Search section -->
+      @include('partials.search')
+      {{-- <x-search link="/show-employees"/> --}}
+
     <div class="container-fluid">
-        <!--Add Employee Button-->
-        {{-- <div class="row">
-            <div class="col-md-6">
-                <a href="/create/id/{{ $company->id }}" class="btn btn-app bg-gradient-success">
-                    <i class="fas fa-plus"></i> Add Employee
-                </a>
-            </div>
-        </div> --}}
+        
         <div class="row">
             @unless(count($employee) == 0)
                 @foreach ($employee as $emp)
-                    @foreach ($company as $comp)
-                        <x-employee-card :company='$comp' :employee='$emp' />
-                    @endforeach
+                    <x-employee-card :employee='$emp' />
                 @endforeach
             @else
-                <div class="error-page">
-                    <h2 class="headline text-warning">204</h2>
-
-                    <div class="error-content">
-                        <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! No list to show.</h3>
-
-                        <p>
-                            This company doesn't have any employees yet! Please add employee first.
-                        </p>
-
-
-                    </div>
-                    <!-- /.error-content -->
-                </div>
-                <!-- /.error-page -->
+                @include('partials.errors')
             @endunless
         </div>
 

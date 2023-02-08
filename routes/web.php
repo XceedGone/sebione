@@ -39,25 +39,25 @@ Route::get('/company/{company}', [CompanyController::class, 'show'])->name('comp
 
 Route::get('/create', [CompanyController::class, 'create']);
 
-Route::get('/create/id/{company}', [EmployeeController::class, 'create']);
-
-
 Route::post('/addCompany', [CompanyController::class, 'store']);
 
-Route::post('/addEmployee', [EmployeeController::class, 'store']);
+Route::get('/create/id/{company}', [EmployeeController::class, 'create']);
 
 Route::delete('/delete/{company}', [CompanyController::class, 'destroy']);
 
 Route::get('/edit/{company}', [CompanyController::class, 'edit']);
 
-Route::get('/editEmp/{employee}', [EmployeeController::class, 'edit']);
-
 Route::put('/editCompany/{company}' , [CompanyController::class, 'update']);
+
+Route::post('/addEmployee', [EmployeeController::class, 'store']);
+
+Route::get('/editEmp/{employee}', [EmployeeController::class, 'edit']);
 
 Route::put('/editEmployee/{employee}' , [EmployeeController::class, 'update']);
 
-
 Route::delete('/deleteEmp/{employee}', [EmployeeController::class, 'destroy']);
+
+
 
 Route::middleware('auth')->group(function () {
     Route::view('about', 'main-contents.about')->name('about');
