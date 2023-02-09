@@ -39,6 +39,7 @@ class HomeController extends Controller
     }
 
     public function showEmployee(){
+        
         $data = Employee::with('comp')->filter(request(['search']))->Paginate(10);
 
         return view('employees.showAll',[

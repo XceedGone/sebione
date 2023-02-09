@@ -18,14 +18,18 @@
         </div><!-- /.container-fluid -->
     </section>
     
+    <x-search link="/company/{{$company->id}}"/>
   
     <div class="container-fluid">
         <!--Add Employee Button-->
         <div class="row">
-            <div class="col-md-6">
-                <a href="/create/id/{{$company->id}}" class="btn btn-app bg-gradient-success">
-                    <i class="fas fa-plus"></i> Add Employee
-                </a>
+
+            <div class="col-md-6 mb-3">
+                {{-- <a href="/create/" class="btn btn-app bg-gradient-success">
+                    <i class="fas fa-plus"></i> Add Company
+                </a> --}}
+                <button class="btn btn-primary"><i class="fa fa-plus"></i>
+                    <a href="/create/id/{{$company->id}}" class="text-white"> Add employee</a></button>
             </div>
         </div>
         <div class="row">

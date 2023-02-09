@@ -1,9 +1,11 @@
+@props(['link'])
+
 <section class="content">
     <div class="container-fluid">
         <h2 class="text-center display-4">Search</h2>
         <div class="row">
             <div class="col-md-8 offset-md-2 mb-3">
-                <form action="/show-companies">
+                <form action="{{$link}}">
                     <div class="input-group">
                         <input type="search" name="search" class="form-control form-control-lg" placeholder="Type your keywords here">
                         <div class="input-group-append">

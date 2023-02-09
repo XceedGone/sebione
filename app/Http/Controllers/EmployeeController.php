@@ -47,20 +47,20 @@ class EmployeeController extends Controller
             'lastname' => ['required'],
             'company' => ['required'],
             'email' => ['email' , 'required'],
-            'phone' => 'required'
+            'phone' => ['required' , 'numeric']
         ]);
 
         $id = $formFields['company'];
    
         Employee::create($formFields);
-        return redirect('/company/'.$id)->with('message','Created Successfully!');
+        return redirect('/company/'.$id)->with('alert-success','Created Successfully!');
     }
 
     //Delete Company 
     public function destroy(Employee $employee)
     {
         $employee->delete();
-        return back()->with('message','Deleted Successfully!');
+        return back()->with('alert-danger','Deleted Successfully!');
     }
 
     //show edit view
@@ -78,12 +78,12 @@ class EmployeeController extends Controller
             'lastname' => ['required'],
             'company' => ['required'],
             'email' => ['email' , 'required'],
-            'phone' => 'required'
+            'phone' => ['required' , 'numeric']
         ]);
  
         $employee->update($formFields);
-
-        return redirect('/home')->with('message','Update Successfully!');
+        $id = $formFields['company'];
+        return redirect('/company/'.$id)->with('alert-success','Update Successfully!');
     }
 
 

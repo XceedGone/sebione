@@ -19,8 +19,8 @@
         </div><!-- /.container-fluid -->
     </section>
       <!-- Search section -->
-      @include('partials.search')
-      {{-- <x-search link="/show-employees"/> --}}
+      {{-- @include('partials.search') --}}
+      <x-search link="/show-employees"/>
 
     <div class="container-fluid">
         
@@ -30,7 +30,7 @@
                     <x-employee-card :employee='$emp' />
                 @endforeach
             @else
-                @include('partials.errors')
+                @include('components.errors')
             @endunless
         </div>
 

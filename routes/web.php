@@ -24,38 +24,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-Route::get('/show-companies', [HomeController::class, 'showCompany']);
-
-Route::get('/show-employees', [HomeController::class, 'showEmployee']);
-
-// Route::get('/home', [EmployeeController::class, 'index'])->name('home');
-
-
-// Route::get('/show', [EmployeeController::class, 'showAll']);
-
-Route::get('/company/{company}', [CompanyController::class, 'show'])->name('company');
-
-Route::get('/create', [CompanyController::class, 'create']);
-
-Route::post('/addCompany', [CompanyController::class, 'store']);
-
-Route::get('/create/id/{company}', [EmployeeController::class, 'create']);
-
-Route::delete('/delete/{company}', [CompanyController::class, 'destroy']);
-
-Route::get('/edit/{company}', [CompanyController::class, 'edit']);
-
-Route::put('/editCompany/{company}' , [CompanyController::class, 'update']);
-
-Route::post('/addEmployee', [EmployeeController::class, 'store']);
-
-Route::get('/editEmp/{employee}', [EmployeeController::class, 'edit']);
-
-Route::put('/editEmployee/{employee}' , [EmployeeController::class, 'update']);
-
-Route::delete('/deleteEmp/{employee}', [EmployeeController::class, 'destroy']);
 
 
 
@@ -65,6 +33,39 @@ Route::middleware('auth')->group(function () {
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
 
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
+   
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+   
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    Route::get('/show-companies', [HomeController::class, 'showCompany']);
+    
+    Route::get('/show-employees', [HomeController::class, 'showEmployee']);
+    
+    Route::get('/company/{company}', [CompanyController::class, 'show'])->name('company');
+    
+    Route::get('/create', [CompanyController::class, 'create']);
+    
+    Route::post('/addCompany', [CompanyController::class, 'store']);
+    
+    Route::get('/create/id/{company}', [EmployeeController::class, 'create']);
+    
+    Route::delete('/delete/{company}', [CompanyController::class, 'destroy']);
+    
+    Route::get('/edit/{company}', [CompanyController::class, 'edit']);
+    
+    Route::put('/editCompany/{company}' , [CompanyController::class, 'update']);
+    
+    Route::post('/addEmployee', [EmployeeController::class, 'store']);
+    
+    Route::get('/editEmp/{employee}', [EmployeeController::class, 'edit']);
+    
+    Route::put('/editEmployee/{employee}' , [EmployeeController::class, 'update']);
+    
+    Route::delete('/deleteEmp/{employee}', [EmployeeController::class, 'destroy']);
+    
+
+
+
 });
 

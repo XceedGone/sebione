@@ -9,30 +9,6 @@ use Illuminate\Validation\Rule;
 
 class CompanyController extends Controller
 {
-    
-    // public function show(Employee $employee){
-    //     return view('show',[
-    //         'employee' => $employee
-    //     ]);
-    // }
-
-    // public function index()
-    // {
-    //     return view('main-contents.index',[
-    //         'companies' => Company::latest()->Paginate(10),
-    //         'company' => Company::latest()->Paginate(5),
-    //         'employee' => Employee::latest()->Paginate(5),
-
-    
-    //     ]);
-    // }
-
-    // public function showAll(){
-    //     return view('company.showAll',[
-    //         'companies' => Company::latest()->Paginate(10),
-    //     ]);
-    // }
-
     public function edit(Company $company)
     {
         return view('main-contents.edit', [
@@ -50,51 +26,51 @@ class CompanyController extends Controller
         // }
 
         $company->delete();
-        return redirect('/show-companies')->with('message','Deleted Successfully!');
+        return redirect('/show-companies')->with('alert-danger', 'Deleted Successfully!');
     }
 
     //show data from database 
-    public function show(Company $company){    
+    public function show(Company $company)
+    {
         return view('main-contents.show', [
-            'employee' => Company::find($company->id)->emp()->latest()->Paginate(10),   
+            'employee' => Company::find($company->id)->emp()->latest()
+                ->filter(request(['search']))->Paginate(10),
             'company' => $company
         ]);
     }
-    
+
     //show create form
-    public function create(){
+    public function create()
+    {
         return view('main-contents.create');
     }
 
     //store data to database 
-    public function store(Company $company){
+    public function store(Company $company)
+    {
         $formFields = request()->validate([
             //Unique parameter is: unique('databaseTable' , 'columnName')
-            'name' => ['required' , Rule::unique('companies' , 'name')],
+            'name' => ['required', Rule::unique('companies', 'name')],
             'email' => ['required', 'email'],
             'website' => 'required',
         ]);
         //Check if there is a image uploaded
         //store it in logos folder in public folder
-        if(request()->hasFile('logo')){
-            $formFields['logo'] = request()->file('logo')->store('logos','public');
+        if (request()->hasFile('logo')) {
+            request()->validate([
+                'logo' => 'dimensions:min_width=100,min_height=200',
+            ]);
+
+            $formFields['logo'] = request()->file('logo')->store('logos', 'public');
+            $company->create($formFields);
+
+            return redirect('/show-companies')->with('alert-success', 'Created Successfully!');
         }
-
-        $company -> create($formFields);
-
-        return redirect('/show-companies')->with('message','Created Successfully!');
-
     }
 
     //Update data
-
-    public function update(Company $company){
-
-        //Checks if logged in user owns the listing
-        // if($listing->user_id != auth()->id()){
-        //     abort(403,'Unauthorized action');
-        // }
-
+    public function update(Company $company)
+    {
         $formFields = request()->validate([
             //Unique parameter is: unique('databaseTable' , 'columnName')
             'name' => ['required'],
@@ -103,14 +79,12 @@ class CompanyController extends Controller
         ]);
         //Check if there is a image uploaded
         //store it in logos folder in public folder
-        if(request()->hasFile('logo')){
-            $formFields['logo'] = request()->file('logo')->store('logos','public');
+        if (request()->hasFile('logo')) {
+            $formFields['logo'] = request()->file('logo')->store('logos', 'public');
         }
 
         $company->update($formFields);
 
-        return redirect('/show-companies')->with('message', 'Update Successfully!');
+        return redirect('/show-companies')->with('alert-success', 'Update Successfully!');
     }
-
-
 }

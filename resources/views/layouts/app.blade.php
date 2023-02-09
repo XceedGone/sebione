@@ -4,16 +4,20 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Mini-CRM</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('css/fontawesome.min.css') }}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
     @yield('styles')
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -30,6 +34,10 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
+    {{-- <x-pop /> --}}
+
+
+
     <div class="wrapper">
 
         <!-- Navbar -->
@@ -42,7 +50,7 @@
                 </li>
             </ul>
 
-            <!-- Right navbar links -->
+            {{-- <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
@@ -64,7 +72,7 @@
                         </form>
                     </div>
                 </li>
-            </ul>
+            </ul> --}}
         </nav>
         <!-- /.navbar -->
 
@@ -83,9 +91,6 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             @yield('content')
-
-
-
 
         </div>
         <!-- /.content-wrapper -->
@@ -112,6 +117,7 @@
         </footer>
 
     </div>
+
     <!-- ./wrapper -->
 
     <!-- REQUIRED SCRIPTS -->
@@ -121,6 +127,34 @@
     <script src="{{ asset('js/adminlte.min.js') }}" defer></script>
 
     @yield('scripts')
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+
+        @if(Session::has('alert-success'))
+        Toastify({
+            text: "{{Session::get('alert-success')}}",
+            duration: 3000,
+            close: true,
+            gravity:"top",
+            position: "center",
+            style: {
+                background: "linear-gradient(to right, #192067, #00c2ff)",
+            }, onClick: function() {}
+        }).showToast();
+        @elseif(Session::has('alert-danger'))
+        Toastify({
+            text: "{{Session::get('alert-danger')}}",
+            duration: 3000,
+            close: true,
+            gravity:"top",
+            position: "center",
+            style: {
+                background: "linear-gradient(to right, #592a4a, #ff0000)",
+            }, onClick: function() {}
+        }).showToast();
+        @endif
+    </script>
 
 </body>
 
