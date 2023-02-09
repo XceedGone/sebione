@@ -16,22 +16,20 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-   
+
             <div class="row">
-            
-                  <div class="card" style="width: 18rem;">
-                  <x-card title="companies" :number="count($companies)" link="/show-companies" />
-                  </div>
-                  <div class="card ml-10" style="width: 18rem;">
-                  <x-card title="employees" :number="count($employees)" link="/show-employees" />
-                  </div>
-             
-             
+
+                <div class="card" style="width: 18rem;">
+                    <x-card title="companies" :number="count($companies)" link="/show-companies" />
+                </div>
+                <div class="card ml-10" style="width: 18rem;">
+                    <x-card title="employees" :number="count($employees)" link="/show-employees" />
+                </div>
+
+
             </div>
             <!-- /.row -->
-            
-             
+
         </div><!-- /.container-fluid -->
     </div>
- 
 @endsection

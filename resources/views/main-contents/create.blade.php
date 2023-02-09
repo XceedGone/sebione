@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="/show-companies">Back</a></li>
                         <li class="breadcrumb-item active">Company Add Form</li>
                     </ol>
                 </div>
@@ -25,7 +25,7 @@
                 <!-- general form elements -->
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Quick Example</h3>
+                        <h3 class="card-title">Company Details</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->

@@ -52,7 +52,7 @@
                 Edit <i class="fas fa-edit"></i>
             </a>
 
-            <button class="btn-danger btn-sm">
+            <button onclick="return confirm('Are you sure you want to delete?')" class="btn-danger btn-sm">
                 <i class="fas fa-trash"></i>
             </button>
         </form>

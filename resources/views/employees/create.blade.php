@@ -25,7 +25,7 @@
                 <!-- general form elements -->
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Quick Example</h3>
+                        <h3 class="card-title">Employee Details</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -37,7 +37,7 @@
                                 <input type="text" class="form-control" id="firstname" placeholder="Enter First Name"
                                     name="firstname" value="{{ old('firstname') }}">
 
-                                @error('name')
+                                @error('firstname')
                                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -47,7 +47,7 @@
                                 <input type="text" class="form-control" id="lastname" placeholder="Enter Last name"
                                     name="lastname" value="{{ old('lastname') }}">
 
-                                @error('name')
+                                @error('lastname')
                                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -61,12 +61,18 @@
                                 <label for="email">Email address</label>
                                 <input type="email" class="form-control" id="email" placeholder="Enter Email"
                                     name="email" value="{{ old('email') }}">
+                                    @error('email')
+                                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="phone">Phone number</label>
                                 <input type="number" class="form-control" id="phone" placeholder="Enter Phone Number"
                                     name="phone" value="{{ old('phone') }}">
+                                    @error('phone')
+                                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                @enderror  
                             </div>
                            
                         </div>

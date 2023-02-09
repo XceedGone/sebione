@@ -4,7 +4,7 @@
     <!-- Widget: user widget style 1 -->
     <div class="card card-widget widget-user">
         <!-- Add the bg color to the header using any of the bg-* classes -->
-        <div class="widget-user-header bg-secondary">
+        <div class="widget-user-header bg-blue-400">
             <h3 class="widget-user-username">{{ $employee->firstname }} {{ $employee->lastname }}</h3>
 
             <h5 class="widget-user-desc">{{ $employee->comp->name }}</h5>
@@ -16,6 +16,9 @@
                 alt="User Avatar" style="width:100px; height: 100px;">
         </div>
         <div class="card-footer">
+            {{-- <div class="description-block">
+                <x-tag :link='$employee->company' :tag='$employee->comp->name' />
+            </div> --}}
             <div class="description-block">
                 <span class="description-text">Contact Number</span>
                 <h5 class="description-header">{{ $employee->phone }}</h5>
@@ -36,7 +39,7 @@
                 <a href="/editEmp/{{ $employee->id }}" class="btn btn-secondary btn-sm">
                     Edit <i class="fas fa-edit"></i>
                 </a>
-                <button class="btn-danger btn-sm">
+                <button onclick="return confirm('Are you sure you want to delete?')" class="btn-danger btn-sm">
                     <i class="fas fa-trash"></i>
                 </button>
             </form>
