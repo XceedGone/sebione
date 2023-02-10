@@ -34,24 +34,24 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password')
         ]);
 
-        $company_1 = Company::factory()->create([
-            'name' => 'San Miguel',
-            'email' => 'sanmig@sanmig.com',
-            'website' => 'sanmig.com',
-        ]);
+        // $company_1 = Company::factory()->create([
+        //     'name' => 'San Miguel',
+        //     'email' => 'sanmig@sanmig.com',
+        //     'website' => 'sanmig.com',
+        // ]);
 
-        $company_2 = Company::factory()->create([
-            'name' => 'Jollibee Corp',
-            'email' => 'jollibee@jolli.com',
-            'website' => 'jollibee.com',
-        ]);
+        // $company_2 = Company::factory()->create([
+        //     'name' => 'Jollibee Corp',
+        //     'email' => 'jollibee@jolli.com',
+        //     'website' => 'jollibee.com',
+        // ]);
 
-        Employee::factory(15)->create([
-            'company' => $company_1->id
-        ]);
+        // Employee::factory(15)->create([
+        //     'company' => $company_1->id
+        // ]);
 
-        Employee::factory(15)->create([
-            'company' => $company_2->id
-        ]);
+        // Employee::factory(15)->create([
+        //     'company' => $company_2->id
+        // ]);
     }
 }

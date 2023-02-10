@@ -34,9 +34,6 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
-    {{-- <x-pop /> --}}
-
-
 
     <div class="wrapper">
 
@@ -49,30 +46,6 @@
                             class="fas fa-bars"></i></a>
                 </li>
             </ul>
-
-            {{-- <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
-                        {{ Auth::user()->name }}
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" style="left: inherit; right: 0px;">
-                        <a href="{{ route('profile.show') }}" class="dropdown-item">
-                            <i class="mr-2 fas fa-file"></i>
-                            {{ __('My profile') }}
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <a href="{{ route('logout') }}" class="dropdown-item"
-                                onclick="event.preventDefault(); this.closest('form').submit();">
-                                <i class="mr-2 fas fa-sign-out-alt"></i>
-                                {{ __('Log Out') }}
-                            </a>
-                        </form>
-                    </div>
-                </li>
-            </ul> --}}
         </nav>
         <!-- /.navbar -->
 
@@ -80,8 +53,8 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="/" class="brand-link">
-                <img src="{{ asset('images/AdminLTELogo.png') }}" alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="{{ asset('images/logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                    style="opacity: .8">
                 <span class="brand-text font-weight-light">SebiOne</span>
             </a>
 
@@ -107,13 +80,9 @@
 
         <!-- Main Footer -->
         <footer class="main-footer">
-            <!-- To the right -->
-            <div class="float-right d-none d-sm-inline">
-                Anything you want
-            </div>
+          
             <!-- Default to the left -->
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
-            reserved.
+            <strong>Created by JC Pesquera &lpar;2023&rpar;.</strong>
         </footer>
 
     </div>
@@ -125,34 +94,37 @@
     @vite('resources/js/app.js')
     <!-- AdminLTE App -->
     <script src="{{ asset('js/adminlte.min.js') }}" defer></script>
+    <!-- jQuery -->
+    <script src="../../plugins/jquery/jquery.min.js"></script>
 
     @yield('scripts')
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script>
-
-        @if(Session::has('alert-success'))
-        Toastify({
-            text: "{{Session::get('alert-success')}}",
-            duration: 3000,
-            close: true,
-            gravity:"top",
-            position: "center",
-            style: {
-                background: "linear-gradient(to right, #192067, #00c2ff)",
-            }, onClick: function() {}
-        }).showToast();
-        @elseif(Session::has('alert-danger'))
-        Toastify({
-            text: "{{Session::get('alert-danger')}}",
-            duration: 3000,
-            close: true,
-            gravity:"top",
-            position: "center",
-            style: {
-                background: "linear-gradient(to right, #592a4a, #ff0000)",
-            }, onClick: function() {}
-        }).showToast();
+        @if (Session::has('alert-success'))
+            Toastify({
+                text: "{{ Session::get('alert-success') }}",
+                duration: 3000,
+                close: true,
+                gravity: "top",
+                position: "center",
+                style: {
+                    background: "linear-gradient(to right, #192067, #00c2ff)",
+                },
+                onClick: function() {}
+            }).showToast();
+        @elseif (Session::has('alert-danger'))
+            Toastify({
+                text: "{{ Session::get('alert-danger') }}",
+                duration: 3000,
+                close: true,
+                gravity: "top",
+                position: "center",
+                style: {
+                    background: "linear-gradient(to right, #592a4a, #ff0000)",
+                },
+                onClick: function() {}
+            }).showToast();
         @endif
     </script>
 

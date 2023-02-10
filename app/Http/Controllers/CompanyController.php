@@ -6,6 +6,7 @@ use App\Models\Company;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Log;
 
 class CompanyController extends Controller
 {
@@ -16,15 +17,9 @@ class CompanyController extends Controller
         ]);
     }
 
-
     //Delete Company 
     public function destroy(Company $company)
     {
-        //Checks if logged in user owns the listing
-        // if($company->user_id != auth()->id()){
-        //     abort(403,'Unauthorized action');
-        // }
-
         $company->delete();
         return redirect('/show-companies')->with('alert-danger', 'Deleted Successfully!');
     }
@@ -62,6 +57,8 @@ class CompanyController extends Controller
             ]);
 
             $formFields['logo'] = request()->file('logo')->store('logos', 'public');
+ 
+
             $company->create($formFields);
 
             return redirect('/show-companies')->with('alert-success', 'Created Successfully!');
