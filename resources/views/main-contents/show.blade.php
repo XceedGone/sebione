@@ -6,20 +6,28 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Employee Lists</h1>
+                    <div class="float-left">
+                    <img 
+                    src="{{ $company->logo ? asset('storage/' . $company->logo) : asset('/images/AdminLTELogo.png') }}"
+                    alt="company logo"
+                    style="width:80px; height:80px; border-radius: 50px; border: 2px solid steelblue;">
+                </div>
+                <div class="p-3 flex">
+                    <h1 class="text-uppercase">{{$company->name}}</h1>
+                </div>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/show-companies">Companies</a></li>
+                        <li class="breadcrumb-item"><a href="/show-companies">Back</a></li>
                         <li class="breadcrumb-item active">Employees</li>
                     </ol>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
     </section>
-    
-    <x-search link="/company/{{$company->id}}"/>
-  
+
+    <x-search link="/company/{{ $company->id }}" />
+
     <div class="container-fluid">
         <!--Add Employee Button-->
         <div class="row">
@@ -29,37 +37,23 @@
                     <i class="fas fa-plus"></i> Add Company
                 </a> --}}
                 <button class="btn btn-primary"><i class="fa fa-plus"></i>
-                    <a href="/create/id/{{$company->id}}" class="text-white"> Add employee</a></button>
+                    <a href="/create/id/{{ $company->id }}" class="text-white"> Add employee</a></button>
             </div>
         </div>
         <div class="row">
             @unless(count($employee) == 0)
-            @foreach ($employee as $emp)
-                <x-employee-card :company='$company' :employee='$emp'/>
-            @endforeach
+                @foreach ($employee as $emp)
+                    <x-employee-card :company='$company' :employee='$emp' />
+                @endforeach
             @else
-            
-            
-                <div class="error-page">
-                  <h2 class="headline text-warning">204</h2>
-          
-                  <div class="error-content">
-                    <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! No list to show.</h3>
-          
-                    <p>
-                      This company doesn't have any employees yet! Please add employee first.
-                    </p>
-          
-                    
-                  </div>
-                  <!-- /.error-content -->
-                </div>
-                <!-- /.error-page -->
-         
-           @endunless
+                @include('components.errors')
+            @endunless
         </div>
     </div>
+   
+
     <div class="mt-6 p-4">
-        {{$employee->links()}}
+        {{ $employee->links() }}
     </div>
+
 @endsection

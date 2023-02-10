@@ -63,19 +63,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="logo">Company Logo</label>
-                                <img class="w-48 mr-6 mb-6" src="{{ asset('storage/'.$company->logo)}}" alt="" />
+                                <img class="w-48 mr-6 mb-6 border border-dark"
+                                src="{{ $company->logo ? asset('storage/' . $company->logo) : asset('/images/AdminLTELogo.png') }}"
+                                alt="logo" />
 
-                                <div class="input-group">
-                                    
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="logo" name="logo"
-                                        value="{{ $company->logo }}">
-                                        <label class="custom-file-label" for="logo">Choose file</label>
-                                    </div>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">Upload</span>
-                                    </div>
-                                </div>
+                                <br>
+                                <input type="file" id="formExample2" name="logo">
+
                                 @error('logo')
                                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                 @enderror

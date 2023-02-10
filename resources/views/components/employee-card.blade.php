@@ -1,13 +1,18 @@
 @props(['employee'])
 
 <div class="col-md-4">
+    <div class="ribbon-wrapper ribbon-lg">
+        <div class="ribbon bg-secondary">
+           <p>{{ $employee->comp->name}}</p>
+        </div>
+      </div>
     <!-- Widget: user widget style 1 -->
     <div class="card card-widget widget-user">
         <!-- Add the bg color to the header using any of the bg-* classes -->
         <div class="widget-user-header bg-blue-400">
             <h3 class="widget-user-username">{{ $employee->firstname }} {{ $employee->lastname }}</h3>
 
-            <h5 class="widget-user-desc">{{ $employee->comp->name }}</h5>
+            {{-- <h5 class="widget-user-desc">{{ $employee->comp->name }}</h5> --}}
 
         </div>
         <div class="widget-user-image">
