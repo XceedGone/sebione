@@ -43,11 +43,13 @@ class CompanyController extends Controller
     //store data to database 
     public function store(Company $company)
     {
+   
         $formFields = request()->validate([
             //Unique parameter is: unique('databaseTable' , 'columnName')
             'name' => ['required', Rule::unique('companies', 'name')],
             'email' => ['required', 'email'],
             'website' => 'required',
+            'logo' => 'required'
         ]);
         //Check if there is a image uploaded
         //store it in logos folder in public folder

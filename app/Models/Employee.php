@@ -13,7 +13,9 @@ class Employee extends Model
     public function scopeFilter($query, array $filters){
         if($filters['search'] ?? false){
             $query->where('firstname', 'like', '%' . request('search') .'%')
-            ->orWhere('lastname', 'like', '%' . request('search') .'%');
+            ->orWhere('lastname', 'like', '%' . request('search') .'%')
+            ->orWhere('email', 'like', '%' . request('search') .'%')
+            ->orWhere('phone', 'like', '%' . request('search') .'%');
         }
     }
 

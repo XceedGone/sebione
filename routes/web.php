@@ -24,9 +24,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
-
-
 Route::middleware('auth')->group(function () {
     Route::view('about', 'main-contents.about')->name('about');
 
@@ -64,8 +61,5 @@ Route::middleware('auth')->group(function () {
     
     Route::delete('/deleteEmp/{employee}', [EmployeeController::class, 'destroy']);
     
-
-
-
 });
 
