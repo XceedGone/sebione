@@ -36,16 +36,16 @@
             </div>
 
             <div class="row">
-                <div class="col-8">
+                {{-- <div class="col-8">
                     <div class="icheck-primary">
                         <input type="checkbox" id="remember" name="remember">
                         <label for="remember">
                             {{ __('Remember Me') }}
                         </label>
                     </div>
-                </div>
+                </div> --}}
                 <!-- /.col -->
-                <div class="col-4">
+                <div class="col-8 mx-auto">
                     <button type="submit" class="btn btn-primary btn-block">{{ __('Login') }}</button>
                 </div>
                 <!-- /.col -->
